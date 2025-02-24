@@ -1,5 +1,6 @@
 // import React from 'react';
 import './Timer.scss';
+// import type { FC } from 'react';
 
 /**
  * シンプルなタイマー表示コンポーネント
