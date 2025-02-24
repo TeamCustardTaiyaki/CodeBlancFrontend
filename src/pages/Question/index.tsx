@@ -37,6 +37,14 @@ const QuestionPage = () => {
     setSelectedAnswer(index);
   };
 
+  // 「次へ」ボタンのクリックハンドラーを追加
+  const handleNext = () => {
+    if (selectedAnswer !== null) {
+      // TODO: 解答を保存する処理を追加
+      navigate('/result'); // 結果ページへ遷移
+    }
+  };
+
   return (
     <div className="question-page">
       <Header />
@@ -119,7 +127,7 @@ const QuestionPage = () => {
           <Button 
             labelText="次へ"
             style="filled"
-            onClick={() => {}}
+            onClick={handleNext}
           />
         </div>
       </div>
