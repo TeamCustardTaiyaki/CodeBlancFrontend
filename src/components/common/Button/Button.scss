@@ -1,0 +1,59 @@
+/**
+ * ボタンコンポーネントのスタイル定義
+ * 塗りつぶしとアウトラインの2種類のスタイルをサポート
+ */
+
+// Sassのcolor機能を使用
+@use "sass:color";
+
+// ベースとなるボタンスタイル
+.button {
+  // フレックスボックスによる中央配置
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  
+  // ボタンの形状とサイズ
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  
+  // インタラクション
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  // 塗りつぶしスタイル
+  &.filled {
+    background-color: #ff9156;
+    color: #ffffff;
+
+    // ホバー時は10%暗く
+    &:hover {
+      background-color: color.adjust(#ff9156, $lightness: -10%);
+    }
+  }
+
+  // アウトラインスタイル
+  &.outlined {
+    background-color: transparent;
+    border: 2px solid #ff9156;
+    color: #ff9156;
+
+    // ホバー時は薄い背景色を表示
+    &:hover {
+      background-color: rgba(#ff9156, 0.1);
+    }
+  }
+
+  // ボタンテキストのスタイル
+  .button-text {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  // 矢印アイコンのスタイル
+  .button-icon {
+    margin-left: 8px;
+  }
+}

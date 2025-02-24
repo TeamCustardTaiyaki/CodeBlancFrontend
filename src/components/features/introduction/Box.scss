@@ -1,0 +1,90 @@
+/**
+ * イントロダクション画面のスタイル定義
+ * ヒーロー画像、タイトル、サブタイトル、CTAボタンを含む
+ */
+
+.box {
+    // コンテナの基本サイズと余白
+    height: 500px;
+    width: 1100px;
+    margin: 35px;
+    max-width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+   
+  
+    // グループコンテナ
+    .group {
+      height: 500px;
+      left: 0;
+      margin: 0 auto;
+      position: relative;
+      width: 1100px;
+      max-width: 100%;
+    }
+  
+    // ヒーロー画像コンテナ
+    .overlap-group {
+      height: 500px;
+      position: relative;
+      width: 1100px;
+      max-width: 100%;
+      
+    }
+  
+    // ヒーロー画像
+    .introduction {
+      height: 500px;
+      left: 0;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 1100px;
+      max-width: 100%;
+      border-radius: 20px;
+    }
+  
+    // CTAボタン
+    .button-instance {
+      background-color: #ff9156 !important;
+      border-radius: 30px !important;
+      display: flex !important;
+      height: 86px !important;
+      left: 117px !important;
+      position: absolute !important;
+      top: 400px !important;
+      width: 182px !important;
+    }
+  
+    // メインタイトル
+    .text-wrapper {
+      color: #ffffff;
+      font-family: "Roboto-Black", Helvetica;
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: 0.10px;
+      line-height: 20px;
+      position: absolute;
+      text-align: center;
+      top: 280px;
+      width: 600px;
+    }
+  
+    // サブタイトル
+    .div {
+      color: #ffffff;
+      font-family: "Roboto-Black", Helvetica;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.10px;
+      line-height: 20px;
+      position: absolute;
+      text-align: center;
+      top: 340px;
+      width: 700px;
+      left: 36px;
+    }
+  }

@@ -1,0 +1,36 @@
+/**
+ * グローバルスタイル定義
+ * リセットCSS、基本フォント設定、カラー変数を含む
+ */
+
+// リセットCSS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// 基本フォント設定
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// グローバルカラー変数とスペーシング
+:root {
+  // 背景色
+  --color-background-default-default: var(--color-primitives-white-1000);
+  
+  // ボーダー色
+  --color-border-default-default: var(--color-primitives-gray-300);
+  
+  // プリミティブカラー
+  --color-primitives-white-1000: rgba(255, 255, 255, 1);
+  --color-primitives-gray-300: rgba(217, 217, 217, 1);
+  
+  // スペーシング
+  --size-space-600: 24px;
+}

@@ -1,0 +1,45 @@
+/**
+ * 料金プランカードのスタイル定義
+ * デスクトップ表示用の白背景カードデザイン
+ */
+
+// メインのカードラッパー
+.pricing-card-wrapper {
+  // カードの基本サイズ
+  height: 450px;
+  width: 350px;
+  
+  // デスクトップ表示用のカードスタイル
+  .pricing-card-device-desktop {
+    // 視覚的なスタイル
+    background-color: #ffffff;
+    border-radius: 20px;
+    
+    // サイズと配置
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    
+    // 内部のレイアウトグループ
+    .overlap-group {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      
+      // 背景要素
+      .rectangle {
+        // 位置とサイズ
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        
+        // 視覚的なスタイル
+        background-color: #ffffff;
+        border-radius: 20px;
+      }
+    }
+  }
+}

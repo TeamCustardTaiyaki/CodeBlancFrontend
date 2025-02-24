@@ -1,0 +1,22 @@
+/**
+ * トップページのスタイル定義
+ * ヒーローセクションとメインコンテンツを含む
+ */
+
+.top-page {
+    // 基本レイアウト
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    
+    // ページタイトル
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-top: 2rem;
+    }
+  }

@@ -1,0 +1,146 @@
+/**
+ * 結果ページのスタイル定義
+ * スコア表示、統計情報、解答履歴を含む
+ */
+
+.result-page {
+  // 基本レイアウト - ヘッダーとフッターを除いた高さ
+  min-height: calc(100vh - 120px);
+  padding: 10px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 結果表示のメインコンテナ
+  .result-container {
+    // コンテナの基本スタイル
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    // 結果ページのタイトル
+    .result-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    // スコアセクション
+    .score-section {
+      text-align: center;
+      margin-bottom: 30px;
+
+      // 個別のスコア項目
+      .score-item {
+        margin-bottom: 20px;
+
+        h2 {
+          font-size: 22px;
+          color: #666;
+          margin-bottom: 5px;
+        }
+
+        .score {
+          font-size: 56px;
+          font-weight: bold;
+          color: #ff9156;
+        }
+      }
+
+      // 統計情報コンテナ
+      .stats-container {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+
+        // 個別の統計項目
+        .stat-item {
+          h3 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 8px;
+          }
+
+          .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+          }
+        }
+      }
+    }
+
+    // 解答履歴セクション
+    .answers-section {
+      margin-bottom: 30px;
+
+      h2 {
+        font-size: 22px;
+        color: #666;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      // 解答グリッド
+      .answers-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+
+        // 個別の解答アイテム
+        .answer-item {
+          background: #f8f8f8;
+          border-radius: 10px;
+          padding: 12px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          // 正解の場合のスタイル
+          &.correct {
+            background: rgba(75, 181, 67, 0.1);
+            .result-icon {
+              color: #4BB543;
+            }
+          }
+
+          // 不正解の場合のスタイル
+          &.incorrect {
+            background: rgba(255, 76, 76, 0.1);
+            .result-icon {
+              color: #FF4C4C;
+            }
+          }
+
+          // 問題番号
+          .question-number {
+            font-weight: bold;
+            color: #333;
+          }
+
+          // 結果アイコン
+          .result-icon {
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    // ボタンコンテナ
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+
+      button {
+        min-width: 180px;
+      }
+    }
+  }
+} 
