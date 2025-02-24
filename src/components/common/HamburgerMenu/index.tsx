@@ -6,7 +6,7 @@ import Home from '../../../assets/images/Home.png';
 import Users from '../../../assets/images/Users.png';
 import taiyakiIcon from '../../../assets/images/taiyaki.png';
 import helpIcon from '../../../assets/images/Help.png';
-import Dashboard from '../../../assets/images/Dashboard.png';
+import Dashboard from '../../../assets/images/dashboard.png';
 
 import './HamburgerMenu.scss';
 
