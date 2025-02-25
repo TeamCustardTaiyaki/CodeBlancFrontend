@@ -8,6 +8,7 @@ import './QuestionPage.scss';
 import { QuestionDisplay } from '../../components/features/QuestionDisplay';
 import { useAnswerSubmission } from '../../hooks/useAnswerSubmission';
 import { ROUTES } from '../../constants/gameConstants';
+import LoadingSpinner from '../../components/common/LoadingSpinner';
 
 /**
  * 問題ページコンポーネント
@@ -20,6 +21,7 @@ const QuestionPage = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const isFromStart = location.state?.fromStart;
+  const [loading, setLoading] = useState<boolean>(true);
 
   // 現在の問題を取得
   const currentQuestion = questions[currentQuestionIndex];
@@ -33,7 +35,12 @@ const QuestionPage = () => {
   }, [currentQuestionIndex]);
 
   useEffect(() => {
-    loadNextQuestion('1'); // 初期レベルを設定
+    const loadQuestion = async () => {
+      setLoading(true);
+      await loadNextQuestion('1'); // 初期レベルを設定
+      setLoading(false);
+    };
+    loadQuestion();
   }, []);
 
   /**
@@ -86,6 +93,10 @@ const QuestionPage = () => {
       }
     }
   };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   if (!currentQuestion) {
     return <div>読み込み中...</div>;
