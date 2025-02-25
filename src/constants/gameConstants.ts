@@ -4,9 +4,10 @@
 export const GAME_CONSTANTS = {
   /** ゲームの制限時間（秒） - 5分 */
   TIME_LIMIT: 300,
+  // TIME_LIMIT: 30,
   
-  /** 1ゲームあたりの問題数 */
-  QUESTIONS_PER_GAME: 10,
+  // /** 1ゲームあたりの問題数 */
+  // QUESTIONS_PER_GAME: 10,
   
   /** 
    * 難易度レベルの定義
@@ -40,4 +41,4 @@ export const ROUTES = {
   
   /** 結果表示画面 */
   RESULT: '/result'
-}; 
+};

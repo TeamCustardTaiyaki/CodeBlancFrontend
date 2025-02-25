@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "../../components/common/Button";
-// import Timer from '../../components/common/timer';
 import RuleDescription from '../../components/features/RuleDescription/RuleDescription';
 import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
@@ -14,7 +13,6 @@ import './Start.scss';
 const StartPage = () => {
   const navigate = useNavigate();
 
-  // コンテンツ領域へのスクロール処理
   useEffect(() => {
     const element = document.getElementById('start-content');
     if (element) {
@@ -42,7 +40,6 @@ const StartPage = () => {
       <div id="start-content" className="content">
         <div className="title-section">
           <h1>What does this code do?&nbsp;&nbsp;-Sample-</h1>
-          {/* <Timer /> */}
         </div>
 
         <div className="rule-section">
@@ -69,4 +66,4 @@ const StartPage = () => {
   );
 };
 
-export default StartPage; 
+export default StartPage;

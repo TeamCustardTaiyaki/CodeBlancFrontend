@@ -3,8 +3,8 @@
  * 問題表示、解答選択、ナビゲーションを含む
  */
 
-.question-page {
-    // 基本レイアウト
+ .question-page {
+  // 基本レイアウト
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -12,7 +12,7 @@
   overflow: hidden;
   scroll-padding-top: 80px;
 
-//メインコンテンツ
+  // メインコンテンツ
   .content {
     // コンテンツの基本レイアウト
     flex: 1;
@@ -64,7 +64,7 @@
         min-height: 200px;
         display: flex;
         gap: 20px;
-        
+
         .pseudo-code-box,
         .source-code-box {
           flex: 1;
@@ -77,16 +77,16 @@
           &::-webkit-scrollbar {
             width: 8px;
           }
-          
+
           &::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 4px;
           }
-          
+
           &::-webkit-scrollbar-thumb {
             background: #888;
             border-radius: 4px;
-            
+
             &:hover {
               background: #555;
             }
@@ -104,7 +104,7 @@
           font-family: 'Consolas', monospace;
           font-size: 16px;
           line-height: 1.5;
-          
+
           pre {
             margin: 0;
             white-space: pre-wrap;
@@ -113,7 +113,7 @@
               .diff-add {
                 background-color: #e6ffed;
                 color: #24292e;
-                
+
                 &::before {
                   content: '+';
                   color: #28a745;
@@ -124,7 +124,7 @@
               .diff-remove {
                 background-color: #ffeef0;
                 color: #24292e;
-                
+
                 &::before {
                   content: '-';
                   color: #d73a49;
@@ -220,6 +220,12 @@
       button {
         width: 120px;
         height: 40px;
+
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+          color: #666;
+        }
       }
     }
   }
@@ -249,7 +255,7 @@
         .problem-area {
           flex-direction: column;
           height: auto;
-          
+
           .pseudo-code-box,
           .source-code-box {
             height: 180px;
@@ -262,4 +268,4 @@
       }
     }
   }
-} 
+}

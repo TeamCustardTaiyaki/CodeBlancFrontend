@@ -5,6 +5,7 @@ import DashboardPage from './pages/Dashboard'
 import StartPage from './pages/start'
 import QuestionPage from './pages/Question'
 import ResultPage from './pages/Result'
+import AboutTaiyakiPage from './pages/AboutTaiyaki'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/start" element={<StartPage />} />
       <Route path="/question" element={<QuestionPage />} />
       <Route path="/result" element={<ResultPage />} />
+      <Route path="/about" element={<AboutTaiyakiPage />} />
       </Routes>
     </div>
     </BrowserRouter>

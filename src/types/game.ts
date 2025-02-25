@@ -2,23 +2,7 @@
  * ゲームに関する型定義
  */
 
-/**
- * 問題データの型定義
- */
-export interface Question {
-  /** 問題のユニークID */
-  id: number;
-  /** 問題文 */
-  text: string;
-  /** ソースコード */
-  code: string;
-  /** 疑似コード */
-  pseudoCode: string;
-  /** 選択肢の配列 */
-  choices: string[];
-  /** 正解の選択肢 */
-  correctAnswer: string;
-}
+
 
 /**
  * ゲームの状態を表す型定義

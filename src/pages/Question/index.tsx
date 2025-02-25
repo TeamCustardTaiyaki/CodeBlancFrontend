@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Timer from '../../components/common/timer';
 import Button from '../../components/common/Button';
 import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer';
 import './QuestionPage.scss';
+import { QuestionDisplay } from '../../components/features/QuestionDisplay';
+import { useAnswerSubmission } from '../../hooks/useAnswerSubmission';
+import { ROUTES } from '../../constants/gameConstants';
 
 /**
  * 問題ページコンポーネント
@@ -12,8 +15,14 @@ import './QuestionPage.scss';
  */
 const QuestionPage = () => {
   const navigate = useNavigate();
-  // 選択された解答のインデックスを管理
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const location = useLocation();
+  const { recordAnswer, submitAllAnswers, loadNextQuestion, questions } = useAnswerSubmission();
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const isFromStart = location.state?.fromStart;
+
+  // 現在の問題を取得
+  const currentQuestion = questions[currentQuestionIndex];
 
   // ページ読み込み時のスクロール処理
   useEffect(() => {
@@ -21,29 +30,66 @@ const QuestionPage = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
+  }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    loadNextQuestion('1'); // 初期レベルを設定
   }, []);
 
   /**
    * 「戻る」ボタンのクリックハンドラー
    */
   const handleBack = () => {
-    navigate(-1);
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+      setSelectedAnswer(null);
+    } else {
+      navigate(-1);
+    }
   };
 
   /**
    * 解答選択時のハンドラー
    */
-  const handleAnswerSelect = (index: number) => {
-    setSelectedAnswer(index);
+  const handleAnswerSelected = (questionId: string, answerId: string) => {
+    recordAnswer(questionId, answerId);
+    setSelectedAnswer(answerId);
   };
 
-  // 「次へ」ボタンのクリックハンドラーを追加
-  const handleNext = () => {
-    if (selectedAnswer !== null) {
-      // TODO: 解答を保存する処理を追加
-      navigate('/result'); // 結果ページへ遷移
+  // タイムアップ時の処理
+  const handleTimeUp = async () => {
+    try {
+      const result = await submitAllAnswers();
+      // 結果をクエリパラメータとして渡す
+      navigate(ROUTES.RESULT, { state: { result } });
+    } catch (error) {
+      console.error('Failed to submit answers:', error);
+      // エラー処理
     }
   };
+
+  // 「次へ」ボタンのクリックハンドラーを修正
+  const handleNext = async () => {
+    if (selectedAnswer !== null) {
+      if (currentQuestionIndex < questions.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedAnswer(null);
+      } else {
+        try {
+          await loadNextQuestion('1'); // 次の問題を取得
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+          setSelectedAnswer(null);
+        } catch (error) {
+          console.log(error);
+          handleTimeUp(); // すべての問題を解いた場合はタイムアップ処理を呼び出す
+        }
+      }
+    }
+  };
+
+  if (!currentQuestion) {
+    return <div>読み込み中...</div>;
+  }
 
   return (
     <div className="question-page">
@@ -52,70 +98,11 @@ const QuestionPage = () => {
         {/* 問題タイトルとタイマー */}
         <div className="title-section">
           <h1>What does this code do?</h1>
-          <Timer />
+          <Timer onTimeUp={handleTimeUp} />
         </div>
         
         <div id="question-content" className="problem-container">
-          <div className="problem-area">
-            {/* 左側：疑似言語 */}
-            <div className="pseudo-code-box">
-              <div className="pseudo-code-content">
-                <p>1. 配列の要素を順番に処理</p>
-                <p>2. 各要素に対して：</p>
-                <p>   - 条件をチェック</p>
-                <p>   - 条件に合致する場合、処理を実行</p>
-                <p>3. 結果を返す</p>
-              </div>
-            </div>
-
-            {/* 右側：ソースコード */}
-            <div className="source-code-box">
-              <div className="code-content">
-                <pre>
-                  <code>
-                    {`public class Main {
-                      public static void main(String[] args) {
-                        int[] arr = {1, 2, 3, 4, 5};
-                        int max = arr[0];
-
-                        for (int i = 0; i < arr.length; i++) {
-                          if (arr[i] > max) {
-                            max = arr[i];
-                          }
-                        }
-
-                        System.out.println(max);
-                      }
-                    }`}
-                  </code>
-                </pre>
-              </div>
-            </div>
-          </div>
-
-          {/* 下部：解答エリア */}
-          <div className="answer-area">
-            {[
-              `for (int i = 0; i < arr.length; i++) {`,
-              `while (i < arr.length) {`,
-              `do { i++;`,
-              `if (arr[i] > max) {`
-            ].map((answer, index) => (
-              <label 
-                key={index} 
-                className={`answer-box ${selectedAnswer === index ? 'selected' : ''}`}
-              >
-                <input
-                  type="radio"
-                  name="answer"
-                  checked={selectedAnswer === index}
-                  onChange={() => handleAnswerSelect(index)}
-                />
-                <span className="radio-custom"></span>
-                <p>{answer}</p>
-              </label>
-            ))}
-          </div>
+          <QuestionDisplay question={currentQuestion} onAnswerSelected={handleAnswerSelected} selectedAnswer={selectedAnswer} />
         </div>
 
         <div className="button-group">
@@ -123,11 +110,13 @@ const QuestionPage = () => {
             labelText="戻る"
             style="filled"
             onClick={handleBack}
+            disabled={isFromStart && currentQuestionIndex === 0} // Start画面からの場合と最初の問題の場合は無効化
           />
           <Button 
             labelText="次へ"
             style="filled"
             onClick={handleNext}
+            disabled={!selectedAnswer} // 選択されていない場合は無効化
           />
         </div>
       </div>
