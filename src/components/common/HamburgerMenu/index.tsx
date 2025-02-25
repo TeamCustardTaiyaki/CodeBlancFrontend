@@ -72,7 +72,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ isOpen }) => {
         </div>
         </Link>
 
-        <div className="menu-item">
+        <div className="menu-item disabled">
           <img src={helpIcon} alt="Help" className="icon" />
           <div className="text-content">
             <div className="main-text">ヘルプ</div>
