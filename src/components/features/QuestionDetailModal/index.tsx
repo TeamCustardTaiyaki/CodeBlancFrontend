@@ -7,6 +7,13 @@ interface QuestionDetailModalProps {
   onClose: () => void;
 }
 
+/**
+ * QuestionDetailModalコンポーネント
+ * 問題の詳細を表示するモーダル
+ * 
+ * @param {QuestionDetailModalProps} props - コンポーネントのプロパティ
+ * @returns {JSX.Element} - モーダルコンポーネント
+ */
 const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({ question, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>

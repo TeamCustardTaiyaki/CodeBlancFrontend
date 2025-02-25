@@ -15,7 +15,7 @@ interface TimerProps {
  * @returns Reactコンポーネント
  */
 const Timer: React.FC<TimerProps> = ({ onTimeUp }) => {
-  const { formattedTime, startTimer } = useTimer(GAME_CONSTANTS.TIME_LIMIT, onTimeUp);
+  const { formattedTime, startTimer } = useTimer(GAME_CONSTANTS.TIME_LIMIT, onTimeUp); // タイマーフックの使用
 
   // コンポーネントマウント時にタイマー開始
   useEffect(() => {

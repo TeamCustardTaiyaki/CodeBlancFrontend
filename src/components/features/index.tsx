@@ -8,5 +8,3 @@ export { default as Introduction } from './introduction';
 
 // レベル選択画面コンポーネント
 export { default as LevelSelect } from './level-select';
-
-// ... 今後追加される機能コンポーネント 

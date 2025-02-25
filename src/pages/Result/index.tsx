@@ -18,6 +18,7 @@ const ResultPage = () => {
 
   const [selectedQuestion, setSelectedQuestion] = useState<QuestionResult | null>(null);
 
+  // ページ読み込み時にスクロール位置をトップに設定
   useEffect(() => {
     const element = document.getElementById('result-content');
     if (element) {
@@ -25,15 +26,18 @@ const ResultPage = () => {
     }
   }, []);
 
+  // 結果が存在しない場合はダッシュボードにリダイレクト
   if (!result) {
     navigate('/dashboard');
     return null;
   }
 
+  // 質問がクリックされたときのハンドラー
   const handleQuestionClick = (question: QuestionResult) => {
     setSelectedQuestion(question);
   };
 
+  // モーダルを閉じるハンドラー
   const handleCloseModal = () => {
     setSelectedQuestion(null);
   };
@@ -101,4 +105,7 @@ const ResultPage = () => {
   );
 };
 
+/**
+ * ResultPageコンポーネントをエクスポート
+ */
 export default ResultPage;

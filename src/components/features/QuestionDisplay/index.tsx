@@ -7,22 +7,33 @@ interface QuestionDisplayProps {
   selectedAnswer: string | null;
 }
 
+/**
+ * QuestionDisplayコンポーネント
+ * 問題の表示と解答の選択を行う
+ * 
+ * @param {QuestionDisplayProps} props - コンポーネントのプロパティ
+ * @returns {JSX.Element} - 問題表示コンポーネント
+ */
 export const QuestionDisplay: React.FC<QuestionDisplayProps> = ({ question, onAnswerSelected, selectedAnswer }) => {
   const [localSelectedAnswer, setLocalSelectedAnswer] = useState<string | null>(selectedAnswer);
 
+  // selectedAnswerが変更されたときにlocalSelectedAnswerを更新
   useEffect(() => {
     setLocalSelectedAnswer(selectedAnswer);
   }, [selectedAnswer]);
 
+  // questionが存在しない場合のローディング表示
   if (!question) {
     return <div>問題を読み込み中...</div>;
   }
 
+  // 解答が選択されたときのハンドラー
   const handleAnswerSelect = (answerId: string) => {
     setLocalSelectedAnswer(answerId);
     onAnswerSelected(question.id, answerId);
   };
 
+  // 選択肢が存在しない場合のデフォルト値を設定
   const choices = question.choices || [];
 
   return (

@@ -1,10 +1,8 @@
-// import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "../../common/Button";
 import { DivWrapper } from "../../common/DivWrapper";
 import { PricingCardWrapper } from "../../common/PricingCardWrapper";
 import ellipse1 from "../../../assets/images/Ellipse 1.png";
-// import monitorPc from "../../../assets/images/monitor pc.png";
 import physics from "../../../assets/images/physics.png";
 import "./LevelSelect.scss";
 
