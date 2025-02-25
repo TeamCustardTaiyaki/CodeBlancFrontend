@@ -27,7 +27,7 @@ const AboutTeamPage = () => {
 
         <div className="team-members">
           <div className="team-member-card">
-            <img src="/src/assets/images/koike.png" alt="小池歩" className="member-photo" />
+            <img src="/images/koike.png" alt="小池歩" className="member-photo" />
             <div className="member-info">
               <h2>小池歩</h2>
               <p>バックエンド</p>
@@ -42,7 +42,7 @@ const AboutTeamPage = () => {
           </div>
 
           <div className="team-member-card">
-            <img src="/src/assets/images/gonpei.png" alt="権瓶元輝" className="member-photo" />
+            <img src="/images/gonpei.png" alt="権瓶元輝" className="member-photo" />
             <div className="member-info">
               <h2>権瓶元輝</h2>
               <p>フロントエンド</p>
@@ -57,7 +57,7 @@ const AboutTeamPage = () => {
           </div>
 
           <div className="team-member-card">
-            <img src="/src/assets/images/sakaue.png" alt="坂上舜寧" className="member-photo" />
+            <img src="/images/sakaue.png" alt="坂上舜寧" className="member-photo" />
             <div className="member-info">
               <h2>坂上舜寧</h2>
               <p>画面設計、ドキュメント作成</p>
@@ -72,7 +72,7 @@ const AboutTeamPage = () => {
           </div>
 
           <div className="team-member-card">
-            <img src="/src/assets/images/sakagami.png" alt="坂上嘉浩" className="member-photo" />
+            <img src="/images/sakagami.png" alt="坂上嘉浩" className="member-photo" />
             <div className="member-info">
               <h2>坂上嘉浩</h2>
               <p>画面設計、ドキュメント作成</p>
