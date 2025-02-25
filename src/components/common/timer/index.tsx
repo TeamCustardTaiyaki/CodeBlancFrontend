@@ -15,13 +15,25 @@ interface TimerProps {
  * @returns Reactコンポーネント
  */
 const Timer: React.FC<TimerProps> = ({ onTimeUp }) => {
-  const { formattedTime, startTimer } = useTimer(GAME_CONSTANTS.TIME_LIMIT, onTimeUp); // タイマーフックの使用
+  const { formattedTime, startTimer, stopTimer } = useTimer(GAME_CONSTANTS.TIME_LIMIT, onTimeUp);
 
   // コンポーネントマウント時にタイマー開始
   useEffect(() => {
     startTimer();
-  }, [startTimer]);
+    // デバッグ用のグローバル関数を定義
+    (window as Window & typeof globalThis & { debugEndTimer?: () => void }).debugEndTimer = () => {
+      console.log('Timer stopped by debug command');
+      stopTimer();
+      if (onTimeUp) {
+        onTimeUp();
+      }
+    };
 
+    // クリーンアップ関数
+    return () => {
+      delete (window as Window & typeof globalThis & { debugEndTimer?: () => void }).debugEndTimer;
+    };
+  }, [startTimer, stopTimer, onTimeUp]);
 
   return (
     <div className="timer">
