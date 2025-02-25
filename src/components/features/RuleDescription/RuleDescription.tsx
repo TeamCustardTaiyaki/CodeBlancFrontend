@@ -39,11 +39,6 @@ const RuleDescription = () => {
         <span className="emphasis">問題文とJavaコード</span>
         <span className="normal">を確認しながら、適切なコードを選びましょう。</span>
         <br />
-        <span className="heading">・</span>
-        <span className="emphasis">擬似言語による解説</span>
-        <span className="normal">も参考にできます</span>
-        <span className="heading">。</span>
-        <br />
         
         {/* 採点方法の説明 */}
         <span className="heading">採点について</span>
