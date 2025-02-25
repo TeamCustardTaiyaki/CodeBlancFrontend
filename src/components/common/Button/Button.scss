@@ -57,3 +57,17 @@
     margin-left: 8px;
   }
 }
+
+@media (max-width: 768px) {
+  .footer {
+    .footer-content {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-section {
+      padding: 0 20px;
+    }
+  }
+}
