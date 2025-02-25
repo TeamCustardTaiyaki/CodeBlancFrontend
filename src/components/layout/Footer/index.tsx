@@ -19,7 +19,7 @@ export const Footer = () => {
         <div className="footer-section">
           <h4>お問い合わせ</h4>
           <ul>
-            <li>support@codeblanc.com</li>
+            <li>dev.taiyaki@gmail.com</li>
           </ul>
         </div>
         
