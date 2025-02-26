@@ -1,3 +1,5 @@
+// src/hooks/useAnswerSubmission.ts
+
 import { useState } from 'react';
 import { Answer, SubmissionResult, QuestionResult, Question } from '../types/api';
 import { fetchNextQuestion } from '../utils/api'; // API関数をインポート
@@ -33,7 +35,8 @@ export const useAnswerSubmission = () => {
         userAnswer: answer.answerId,
         pseudoCode: question?.pseudoCode || '',
         code: question?.code || '',
-        selectedChoice: question?.choices.find(choice => choice.id === answer.answerId)?.text || ''
+        selectedChoice: question?.choices.find(choice => choice.id === answer.answerId)?.text || '',
+        correctChoice: question?.choices.find(choice => choice.id === question.correctAnswer)?.text || '' // 追加
       };
     });
 

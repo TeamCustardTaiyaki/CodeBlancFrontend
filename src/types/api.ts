@@ -49,6 +49,7 @@ export interface Answer {
 export interface QuestionResult {
   questionId: string;
   correct: boolean;
+  correctChoice:string;
   points: number;
   userAnswer: string;
   pseudoCode: string;

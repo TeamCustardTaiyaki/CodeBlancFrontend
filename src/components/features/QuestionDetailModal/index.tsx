@@ -29,6 +29,9 @@ const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({ question, onC
           <p><strong>コード:</strong></p>
           <pre>{question.code}</pre>
           <p><strong>選んだ選択肢:</strong> {question.selectedChoice}</p>
+          {!question.correct && (
+            <p><strong>正しい選択肢:</strong> {question.correctChoice}</p>
+          )}
         </div>
         <button onClick={onClose}>閉じる</button>
       </div>
