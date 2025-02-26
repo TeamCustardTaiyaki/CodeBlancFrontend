@@ -3,7 +3,7 @@ import { Question } from '../types/api';
 
 // APIクライアントの設定
 const apiClient = axios.create({
-  baseURL: 'https://codeblanc-server.kln-develop.workers.dev/v1', // 本番環境のURLに変更する
+  baseURL: import.meta.env.VITE_API_BASE_URL, // 本番環境のURLに変更する
   // baseURL: '/v1', // 本番環境のURLに変更する
   timeout: 10000,
   headers: {
